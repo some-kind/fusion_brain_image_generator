@@ -18,10 +18,10 @@ Instructions for obtaining API keys can be found here https://fusionbrain.ai/doc
 After installing all the dependencies, creating a file with API keys and the "images" folder, you can run the program 
   python3 app.py
 
-You will be asked to enter a prompt (a request for generation), specify the parameters and the number of images, and select a style.
+You will be asked to enter a prompt (a request for generation), specify the parameters and select a style.
 If errors are made when entering data, the default data will be selected.
 
-The generated images are placed in the "images" folder and have the name of the format "date_and_time_of_generation_text_query_number_of_image.jpg"
+The generated images are placed in the "images" folder and have the name of the format "date_and_time_of_generation_text_query.jpg"
 
 
 
@@ -46,7 +46,7 @@ The generated images are placed in the "images" folder and have the name of the 
 После установки всех зависимостей, создания файла с API ключами и папки images, можно запускать программу 
   python3 app.py
 
-Вас попросят ввести промпт (запрос для генерации), указать параметры и количество изображений, выбрать стиль.
+Вас попросят ввести промпт (запрос для генерации), указать параметры и выбрать стиль.
 Если будут допущены ошибки при вводе данных, будут выбраны данные по умолчанию.
 
-Сгенерированные изображения помещаются в папку images и имеют название формата "дата_и_время_генерации_текст_запроса_номер_изображения.jpg"
+Сгенерированные изображения помещаются в папку images и имеют название формата "дата_и_время_генерации_текст_запроса.jpg"

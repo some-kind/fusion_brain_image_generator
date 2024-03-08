@@ -10,7 +10,7 @@ from fusion_brain_requests import FBRequest
 
 
 def create_images(images_codes: list, name):
-    image_number = 1
+    # image_number = 1
     current_datetime = datetime.datetime.now()
     formatted_datetime = current_datetime.strftime("%Y-%m-%d_%H-%M")
     for image_base64_code in images_codes:
@@ -18,45 +18,37 @@ def create_images(images_codes: list, name):
 
         image = Image.open(BytesIO(image_bin_code))
 
-        image.save(f"images/{formatted_datetime}_{name}_{image_number}.jpg")
-        print(f"Создан файл: images/{formatted_datetime}_{name}_{image_number}.jpg")
-        image_number += 1
+        image.save(f"images/{formatted_datetime}_{name}.jpg")
+        print(f"Создан файл: images/{formatted_datetime}_{name}.jpg")
+        # image_number += 1
 
 
 def enter_params():
-    print("Введите следующие данные через запятую без пробелов:\n"
-          "   Кол-во генерируемых изображений (макс. 6, по умолчанию 1),\n"
+    print("Введите параметры изображения через запятую без пробелов:\n"
           "   Ширину изображения в пикселях (макс. 1024, по умолчанию 1024),\n"
           "   Высоту изображения в пикселях (макс. 1024, по умолчанию 1024),\n"
-          "  Пример: 3,512,512\n")
+          "  Пример: 512,512\n")
     input_params = input("Параметры: ")
-    if input_params.count(",") == 2:
+    if input_params.count(",") == 1:
         input_params = input_params.split(",")
 
-        if input_params[0].isdigit() and (int(input_params[0]) <= 6):
-            number_of_images = int(input_params[0])
-        else:
-            print("Введены некорректные данные о количестве изображений, применено значение по умолчанию")
-            number_of_images = 1
-
-        if input_params[1].isdigit() and (int(input_params[1]) <= 1024):
-            width = int(input_params[1])
+        if input_params[0].isdigit() and (int(input_params[0]) <= 1024):
+            width = int(input_params[0])
         else:
             print("Введены некорректные данные о ширине изображений, применено значение по умолчанию")
             width = 1024
 
-        if input_params[2].isdigit() and (int(input_params[2]) <= 1024):
-            height = int(input_params[2])
+        if input_params[1].isdigit() and (int(input_params[1]) <= 1024):
+            height = int(input_params[1])
         else:
             print("Введены некорректные данные о высоте изображений, применено значение по умолчанию")
             height = 1024
     else:
         print("Введены некорректные данные, применено значение по умолчанию")
-        number_of_images = 1
         width = 1024
         height = 1024
 
-    return number_of_images, width, height
+    return width, height
 
 
 def main():

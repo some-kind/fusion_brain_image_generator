@@ -34,12 +34,11 @@ class FBRequest:
             data = response.json()
             return data[0]["id"]
 
-    def generate(self, prompt, model, images=1, width=1024, height=1024, negative_prompt=None, style="DEFAULT"):
+    def generate(self, prompt, model, width=1024, height=1024, negative_prompt=None, style="DEFAULT"):
         """
         Request for image generation
         :param prompt: Description of the desired image
         :param model: ID of model (you can get it using the 'get_model' method)
-        :param images: Number of images to generate
         :param width: Width of image
         :param height: Height of image
         :param negative_prompt: Description of prohibited items for generation
@@ -53,7 +52,7 @@ class FBRequest:
         # }
         params = {
             "type": "GENERATE",
-            "numImages": images,
+            "numImages": 1,
             "width": width,
             "height": height,
             "style": style,
@@ -69,8 +68,8 @@ class FBRequest:
         }
 
         response = requests.post(self.__url + "key/api/v1/text2image/run", headers=self.__auth_headers, files=data)
-        data = response.json()
-        return data["uuid"]
+        generation_data = response.json()
+        return generation_data["uuid"]
 
     def __check_generation(self, request_uuid):
         """
